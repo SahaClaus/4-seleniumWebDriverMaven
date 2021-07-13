@@ -11,6 +11,7 @@ public class LoginPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
+    //поиск элемента поле ввода на странице
     @FindBy(css = "#username")
     private WebElement loginField;
 
@@ -20,10 +21,13 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
+    //Метод ввода логина
     public void login(String login) {
+        //переход на страницу ввода логина
         driver.get("https://academ-it.ru/mantisbt/login_page.php");
-
+        //ввод логина
         loginField.sendKeys(login);
+        //нажатие клавиши Enter
         loginField.sendKeys(Keys.ENTER);
     }
 }

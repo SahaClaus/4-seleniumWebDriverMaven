@@ -10,22 +10,26 @@ public class MainPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
+    //определение локатора залогиненности
     @FindBy(css = "span.user-info")
     private WebElement userName;
 
+    //определение локатора кнопки ViewIssue
     @FindBy(css = "a[href='/mantisbt/view_all_bug_page.php']")
     private WebElement viewIssuePageButton;
 
+    //инициализация полей класса
     public MainPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 30, 500);
+        wait = new WebDriverWait(driver, 30, 2000);
         PageFactory.initElements(driver, this);
     }
 
+    //метод для получения имени пользователя из вебэлемента
     public String getUserName() {
         return userName.getText();
     }
-
+    //метод для перехода на страницу ViewIssue
     public void goToViewIssuePage() {
         viewIssuePageButton.click();
     }
